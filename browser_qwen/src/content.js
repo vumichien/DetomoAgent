@@ -29,7 +29,7 @@ button.style.position = 'fixed';
 button.style.top = '30px';
 button.style.right = '30px';
 button.style.zIndex = "9999";
-button.textContent = "Add to Qwen's Reading List";
+button.textContent = "Add to Reading List";
 button.style.fontFamily = 'Arial, sans-serif';
 button.style.fontSize = '14px';
 button.style.width = '140px';
@@ -78,7 +78,7 @@ button.addEventListener('click', (e) => {
     isMouseReleased = false;
     e.stopPropagation();
   } else {
-    var result = confirm("Are you sure to ask Qwen to remember this page?");
+    var result = confirm("Are you sure to ask Detomo AI to remember this page?");
     if (result) {
       cache_browser()
     }

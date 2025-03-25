@@ -86,6 +86,7 @@ If you are using your own model service instead of DashScope, then please execut
 # Example: Assuming Qwen1.5-72B-Chat is deployed at http://localhost:8000/v1 using vLLM, you can specify the model service as:
 #   --llm Qwen1.5-72B-Chat --model_server http://localhost:8000/v1 --api_key EMPTY
 python run_server.py --llm {MODEL} --model_server {API_BASE} --workstation_port 7864 --api_key {API_KEY}
+python run_server.py --llm qwen2.5:7b --model_server http://localhost:11434/v1 --api_key EMPTY
 ```
 
 Now you can access [http://127.0.0.1:7864/](http://127.0.0.1:7864/) to use the Workstation's Editor mode and Chat mode.
@@ -103,5 +104,5 @@ Note that after installing the Chrome extension, you need to refresh the page fo
 
 When you want Qwen to read the content of the current webpage:
 
-- Click the `Add to Qwen's Reading List` button on the screen to authorize Qwen to analyze the page in the background.
-- Click the Qwen icon in the browser's top right corner to start interacting with Qwen about the current page's content.
+- Click the `Add to Reading List` button on the screen to authorize Qwen to analyze the page in the background.
+- Click the icon in the browser's top right corner to start interacting with Qwen about the current page's content.

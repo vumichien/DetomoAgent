@@ -33,7 +33,7 @@ def get_avatar_image(name: str = 'user') -> str:
     if name == 'user':
         return os.path.join(os.path.dirname(__file__), 'assets/user.jpeg')
 
-    return os.path.join(os.path.dirname(__file__), 'assets/logo.jpeg')
+    return os.path.join(os.path.dirname(__file__), 'assets/logo.png')
 
 
 def convert_history_to_chatbot(messages):

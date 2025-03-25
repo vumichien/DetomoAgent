@@ -193,7 +193,7 @@ def parse_html_bs(path: str, extract_image: bool = False):
         # replace multiple newlines
         s = re.sub('\n+', '\n', s)
         # replace special string
-        s = s.replace("Add to Qwen's Reading List", '')
+        s = s.replace("Add to Reading List", '')
         return s
 
     try:

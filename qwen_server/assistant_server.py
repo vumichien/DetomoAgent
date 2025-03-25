@@ -98,9 +98,9 @@ def init_chatbot():
     response = read_meta_data_by_condition(meta_file, url=page_url)
     if not response:
         gr.Info(
-            "Please add this page to Qwen's Reading List first! If you have already added it, please reopen later...")
+            "Please add this page to Reading List first! If you have already added it, please reopen later...")
     elif response == '[CACHING]':
-        gr.Info('Please reopen later, Qwen is analyzing this page...')
+        gr.Info('Please reopen later, analyzing this page...')
     else:
         return read_history(page_url, history_dir)
 
@@ -115,7 +115,9 @@ with gr.Blocks(css=css, theme='soft') as demo:
     chatbot = gr.Chatbot([], elem_id='chatbot', height=480, avatar_images=(None, get_avatar_image('qwen')))
     with gr.Row():
         with gr.Column(scale=7):
-            txt = gr.Textbox(show_label=False, placeholder='Chat with Qwen...', container=False)
+            txt = gr.Textbox(
+                show_label=False, placeholder="Chat with Detomo bot...", container=False
+            )
         with gr.Column(scale=1, min_width=0):
             clr_bt = gr.Button('🧹', elem_classes='bt_small_font')
         with gr.Column(scale=1, min_width=0):

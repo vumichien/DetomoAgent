@@ -514,7 +514,7 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
                     with gr.Column(scale=13):
                         chat_txt = gr.Textbox(
                             show_label=False,
-                            placeholder='Chat with Qwen...',
+                            placeholder="Chat with Detomo bot...",
                             container=False,
                         )
                     with gr.Column(scale=1, min_width=0):
@@ -568,7 +568,7 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
                     with gr.Column(scale=13):
                         chat_txt = gr.Textbox(
                             show_label=False,
-                            placeholder='Chat with Qwen...',
+                            placeholder="Chat with Detomo bot...",
                             container=False,
                         )
                     with gr.Column(scale=1, min_width=0):
