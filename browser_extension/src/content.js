@@ -1,4 +1,3 @@
-
 function getPageTextContent() {
   var textContent = document.body.textContent;
   return textContent;
@@ -9,7 +8,18 @@ function cache_browser(){
   const text = body.innerHTML;
   console.log(text);
   chrome.runtime.sendMessage({ data: text , close: true , flag: 'open_tab_and_cache_from_content', type: 'html'});
+}
 
+function checkPageExists(url) {
+  chrome.runtime.sendMessage({ 
+    url: url, 
+    flag: 'check_page_exists'
+  }, function(response) {
+    if (response && !response.exists) {
+      // Only show button if page doesn't exist
+      document.body.appendChild(button);
+    }
+  });
 }
 
 const floatingBox = document.createElement('div');
@@ -43,8 +53,6 @@ button.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
 
 floatingBox.appendChild(button);
 
-document.body.appendChild(button);
-
 let isDragging = false;
 var isMouseReleased = false;
 let initialX;
@@ -70,7 +78,6 @@ document.addEventListener('mousemove', (e) => {
 
 document.addEventListener('mouseup', (e) => {
   isDragging = false;
-
 });
 
 button.addEventListener('click', (e) => {
@@ -84,3 +91,6 @@ button.addEventListener('click', (e) => {
     }
   }
 });
+
+// Check if page exists before showing button
+checkPageExists(window.location.href);

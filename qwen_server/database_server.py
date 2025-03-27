@@ -33,10 +33,11 @@ app = FastAPI()
 
 logger.info(get_local_ip())
 origins = [
-    'http://127.0.0.1:' + str(server_config.server.workstation_port),
-    'http://localhost:' + str(server_config.server.workstation_port),
-    'http://0.0.0.0:' + str(server_config.server.workstation_port),
-    'http://' + get_local_ip() + ':' + str(server_config.server.workstation_port),
+    "http://127.0.0.1:" + str(server_config.server.workstation_port),
+    "http://localhost:" + str(server_config.server.workstation_port),
+    "http://0.0.0.0:" + str(server_config.server.workstation_port),
+    "http://" + get_local_ip() + ":" + str(server_config.server.workstation_port),
+    "chrome-extension://*",  # Allow all Chrome extensions
 ]
 
 app.add_middleware(
@@ -72,6 +73,21 @@ def change_checkbox_state(key):
     with open(meta_file, 'w', encoding='utf-8') as file:
         json.dump(meta_info, file, indent=4)
     return {'result': 'changed'}
+
+
+def check_page_exists(url: str):
+    if not get_file_type(url) in ["pdf", "docx", "pptx", "txt"]:
+        url = os.path.join(
+            server_config.path.download_root,
+            hash_sha256(url),
+            get_basename_from_url(url),
+        )
+
+    if os.path.exists(meta_file):
+        with open(meta_file, "r", encoding="utf-8") as file:
+            meta_info = json.load(file)
+            return {"exists": url in meta_info}
+    return {"exists": False}
 
 
 def cache_page(**kwargs):
@@ -134,6 +150,8 @@ async def web_listening(request: Request):
             writer.write(new_line)
 
         rsp = "Page added successfully"
+    elif msg_type == "check_page":
+        rsp = check_page_exists(data["url"])
     else:
         raise NotImplementedError
 
