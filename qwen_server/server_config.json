@@ -11,7 +11,7 @@
         "workstation_port": 7864,
         "model_server": "http://localhost:11434/v1",
         "api_key": "EMPTY",
-        "llm": "qwen2.5:7b",
+        "llm": "gemma3:4b",
         "max_ref_token": 4000,
         "max_days": 7
     }

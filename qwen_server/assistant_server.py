@@ -112,11 +112,18 @@ def clear_session():
 
 
 with gr.Blocks(css=css, theme='soft') as demo:
-    chatbot = gr.Chatbot([], elem_id='chatbot', height=480, avatar_images=(None, get_avatar_image('qwen')))
+    chatbot = gr.Chatbot(
+        [],
+        elem_id="chatbot",
+        height=480,
+        avatar_images=(get_avatar_image("user"), get_avatar_image("Detomo Agent")),
+    )
     with gr.Row():
         with gr.Column(scale=7):
             txt = gr.Textbox(
-                show_label=False, placeholder="Chat with Detomo bot...", container=False
+                show_label=False,
+                placeholder="Chat with Detomo Agent...",
+                container=False,
             )
         with gr.Column(scale=1, min_width=0):
             clr_bt = gr.Button('🧹', elem_classes='bt_small_font')

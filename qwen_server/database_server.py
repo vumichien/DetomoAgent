@@ -113,6 +113,27 @@ async def web_listening(request: Request):
     elif msg_type == 'pop_url':
         # What a misleading name! pop_url actually means add_url. pop is referring to the pop_up ui.
         rsp = update_pop_url(data['url'])
+    elif msg_type == "add_manual_page":
+        # Add page content manually
+        url = data["url"]
+        content = data["content"]
+        title = data.get("title", "Manual Page")
+
+        # Save content to file
+        save_text_to_file(url, content)
+
+        # Add metadata
+        save_browsing_meta_data(url, title, meta_file)
+
+        # Clear old history if exists
+        save_history(None, url, history_dir)
+
+        # Update popup_url.jsonl with the new URL
+        new_line = {"url": url}
+        with jsonlines.open(cache_file_popup_url, mode="w") as writer:
+            writer.write(new_line)
+
+        rsp = "Page added successfully"
     else:
         raise NotImplementedError
 

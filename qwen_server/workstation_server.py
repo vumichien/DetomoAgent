@@ -174,7 +174,7 @@ def download_text(text):
 
 def choose_plugin(chosen_plugin):
     if chosen_plugin == CI_OPTION:
-        gr.Info('Code execution is NOT sandboxed. Do NOT ask Qwen to perform dangerous tasks.')
+        gr.Info('Code execution is NOT sandboxed. Do NOT ask Detomo Agent to perform dangerous tasks.')
     if chosen_plugin == CI_OPTION or chosen_plugin == DOC_OPTION:
         return gr.update(interactive=True), None
     else:
@@ -388,10 +388,10 @@ def format_generate(edit, context):
         yield res
 
 
-with gr.Blocks(css=css, js=js, theme='soft') as demo:
-    title = gr.Markdown('Qwen Agent: BrowserQwen', elem_classes='title')
+with gr.Blocks(css=css, js=js, theme='d8ahazard/material_design_rd') as demo:
+    title = gr.Markdown('AI Agent: Detomo', elem_classes='title')
     desc = gr.Markdown(
-        'This is the editing workstation of BrowserQwen, where Qwen has collected the browsing history. Qwen can assist you in completing your creative work!',
+        'This is the editing workstation of Detomo, where Detomo has collected the browsing history. Detomo can assist you in completing your creative work!',
         elem_classes='desc',
     )
 
@@ -450,7 +450,7 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
                 #     layout_bt = gr.Button('👉', variant='primary')
 
             with gr.Column():
-                cmd_area = gr.Textbox(lines=10, max_lines=10, label="Qwen's Inner Thought", elem_id='cmd')
+                cmd_area = gr.Textbox(lines=10, max_lines=10, label="Detomo Agent's Inner Thought", elem_id='cmd')
                 with gr.Tab('Markdown'):
                     # md_out_bt = gr.Button('Render')
                     md_out_area = gr.Markdown(elem_classes=['md_tmp', 'add_scrollbar'])
@@ -487,13 +487,13 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
     - Browsing History:
         - Start Date/End Date: Selecting the browsed materials for the desired time period, including the start and end dates
         - The browsed materials list: supporting the selection or removal of specific browsing content
-    - Editor: In the editing area, you can directly input content or special instructions, and then click the ```Continue``` button to have Qwen assist in completing the editing work:
-        - After inputting the content, directly click the ```Continue``` button: Qwen will begin to continue writing based on the browsing information
+    - Editor: In the editing area, you can directly input content or special instructions, and then click the ```Continue``` button to have Detomo Agent assist in completing the editing work:
+        - After inputting the content, directly click the ```Continue``` button: Detomo Agent will begin to continue writing based on the browsing information
         - Using special instructions:
-            - /title + content: Qwen enables the built-in planning process and writes a complete manuscript
-            - /code + content: Qwen enables the code interpreter plugin, writes and runs Python code, and generates replies
-            - /plug + content: Qwen enables plugin and select appropriate plugin to generate reply
-    - Chat: Interactive area. Qwen generates replies based on given reference materials. Selecting Code Interpreter will enable the code interpreter plugin
+            - /title + content: Detomo Agent enables the built-in planning process and writes a complete manuscript
+            - /code + content: Detomo Agent enables the code interpreter plugin, writes and runs Python code, and generates replies
+            - /plug + content: Detomo Agent enables plugin and select appropriate plugin to generate reply
+    - Chat: Interactive area. Detomo Agent generates replies based on given reference materials. Selecting Code Interpreter will enable the code interpreter plugin
 
         """)
 
@@ -504,7 +504,7 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
                     elem_id='chatbot',
                     height=680,
                     show_copy_button=True,
-                    avatar_images=[None, get_avatar_image('qwen')],
+                    avatar_images=[None, get_avatar_image('Detomo Agent')],
                     flushing=False,
                 )
                 with gr.Row():
@@ -561,7 +561,7 @@ with gr.Blocks(css=css, js=js, theme='soft') as demo:
                     elem_id='pure_chatbot',
                     height=680,
                     show_copy_button=True,
-                    avatar_images=[None, get_avatar_image('qwen')],
+                    avatar_images=[None, get_avatar_image('Detomo Agent')],
                     flushing=False,
                 )
                 with gr.Row():

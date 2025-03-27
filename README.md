@@ -30,7 +30,8 @@ Now Qwen-Agent plays as the backend of [Qwen Chat](https://chat.qwen.ai/).
 
 - Install the stable version from PyPI:
 ```bash
-pip install qwen-agent[gui,rag,code_interpreter,python_executor] mcp
+pip install qwen-agent[gui,rag,code_interpreter,python_executor] 
+pip install mcp
 # Or use `pip install -U qwen-agent` for the minimal requirements.
 # The optional requirements, specified in double brackets, are:
 #   [gui] for Gradio-based GUI support;
